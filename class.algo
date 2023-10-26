@@ -1,0 +1,55 @@
+
+
+// First figure out method to factor lenght of sentence (the number of characters)
+ALGORITHM element_checking
+VAR
+/* Declaring variables word_counter, char_counter, vowel_counter, space_counter and i for indexing*/
+  char_counter, word_counter, vowel_counter, i, space_counter :INTEGER := 0
+  sentence: STRING
+
+  // Get (Read) statement for checking
+BEGIN
+Read(sentence)
+
+  //using while loop to go through the statement for checking
+WHILE (i < sentence.length ) DO 
+    // the algorithm start by reading the statement, after reading it
+    // While loop will iterate the lenght of the statement as long as is lessthan i
+    IF (sentence[i] = " ") THEN
+    space_counter = space_counter + 1
+    ELSE
+        char_counter = char_counter + 1
+    END_IF
+// if lenght of sentence is lessthan i, then the IF condition while excute,
+// in the IF condition, if sentence array index value is empty space, space counter will increment
+// else character counter will increment
+
+//=================================================================================================
+
+// Switch statement to check for vowels vowels character in a statement
+
+    SWITCH (sentence[i]) DO
+      case "a" : vowel_counter = vowel_counter + 1; BREAK;
+      case "e" : vowel_counter = vowel_counter + 1; BREAK;
+      case "i" : vowel_counter = vowel_counter + 1; BREAK;
+      case "o" : vowel_counter = vowel_counter + 1; BREAK;
+      case "u" : vowel_counter = vowel_counter + 1; BREAK;
+      default : vowel_counter
+    END_SWITCH
+ // increment i by 1 on every iteration
+      i =+ 1
+END_WHILE
+
+// Using our space counter we can get number of word by incrementing space_counter +1 
+// Since the space is a gap between numbers
+// to get the number of words in the sentence, assign the word counter to space counter + 1
+word_counter = space_counter + 1
+// //////////////
+
+
+Write(char_counter);
+Write(word_counter);
+Write(vowel_counter);
+
+END
+

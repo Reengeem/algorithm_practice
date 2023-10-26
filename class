@@ -1,0 +1,69 @@
+/* *********** Bus tickets ******* */
+
+/*
+ask how old are you
+IF you a/* *********** Bus tickets ******* */
+
+/*
+ask how old are you
+IF you are under 16, THEN pay half ticket
+ELSE pay full ticket
+*/
+// first solution
+ticket_price := 20 ;
+IF (age <=16) THEN
+   ticket_price := 10 ;
+END_IF
+
+// Second solution
+IF (age <= 16) THEN
+   ticket_price := 10 ;
+ELSE
+   ticket_price := 20 ;
+END_IF
+Well let's try to make it a little harder, we'll have three test cases:
+a case where the age is under 10, the passenger will pay only 20% of the real price;
+a case where the age is between 10 and 16, the passenger will pay 50% of the ticket price.
+a case where the age is above 16, the passenger will pay a full ticket.
+The solution will look like:
+
+IF (age<=10) THEN
+   ticket_price := 4 ;
+ELSE_IF (age<=16) THEN
+/*  in this case, we don't specify whether the age is not under 10
+because in this case it will satisfy the first condition
+and execute the first block of instruction */
+   ticket_price := 10 ;
+ELSE
+   ticket_price := 20 ;
+END_IFre under 16, THEN pay half ticket
+ELSE pay full ticket
+*/
+// first solution
+ticket_price := 20 ;
+IF (age <=16) THEN
+   ticket_price := 10 ;
+END_IF
+
+// Second solution
+IF (age <= 16) THEN
+   ticket_price := 10 ;
+ELSE
+   ticket_price := 20 ;
+END_IF
+Well let's try to make it a little harder, we'll have three test cases:
+a case where the age is under 10, the passenger will pay only 20% of the real price;
+a case where the age is between 10 and 16, the passenger will pay 50% of the ticket price.
+a case where the age is above 16, the passenger will pay a full ticket.
+The solution will look like:
+
+IF (age<=10) THEN
+   ticket_price := 4 ;
+ELSE_IF (age<=16) THEN
+/*  in this case, we don't specify whether the age is not under 10
+because in this case it will satisfy the first condition
+and execute the first block of instruction */
+   ticket_price := 10 ;
+ELSE
+   ticket_price := 20 ;
+END_IF

@@ -1,0 +1,275 @@
+Practicing with arrays
+After getting to know what are arrays, and what's the use of them, let's have some practice.
+The first thing to start with any array is to know how to define it, and how to browse it. Let take the following code:
+
+An array data structure, or simply an array is one of the most used data structure in programming.
+Here, we will start by learning how to declare an array.
+Let take the following code:
+
+ALGORITHM traverse_array
+VAR
+   tab : ARRAY_OF INTEGER[5]; // declaring the array and define its length.
+   i : INTEGER; // declaring the index for each element in the array.
+BEGIN
+  tab := {1,2,3,5,7,8}; // inserting the elements directly in the array.
+  Write('Print Array :')
+  FOR i FROM 0 TO 4 STEP 1  DO   // the index of arrays start from 0;
+     Write(tab[i]) // to access the element, we use the name_array[indexation]
+  END_FOR
+
+// another version
+   FOR i FROM 0 TO tab.length-1 STEP 1  DO
+   // here we can replace the static
+   //number in the max field using the `.length` property
+       Write(tab[i])
+   END_FOR
+END
+
+The second step is to see how we insert an element inside an array.
+Remember that, when inserting elements in an array, we have to always make sure that we do not shrink the size of the array.
+
+In the example below, we are going to ask the user to enter a new element, also its position in this array.
+Let's take a look at the following code:
+
+ALGORITHM insertion_array
+VAR
+   tab : ARRAY_OF INTEGER[5];
+   i,j, pos, elt : INTEGER;
+BEGIN
+   FOR i FROM 0 TO 3 DO
+       Read(tab[i]);// insert from user
+   END_FOR
+
+   Write("give the element to insert");
+   Read(elt);
+   Write("give the position to insert in array");
+   Read(pos);
+   j := tab.length;
+   WHILE (j >= pos) DO
+       tab[j+1] := tab[j]; // translation from left to right
+       j := j-1; // update index
+   END_WHILE
+
+   tab[pos] := elt;
+   // remember the tab.length is increased by 1.
+END
+
+
+The third step is to see how we can perform a search in an array.
+There are multiple algorithms used to search an element in an array.
+
+In this example, we are going to use a simple one.
+Here are the steps that we should follow:
+Start
+Set J = 0
+Repeat steps 4 and 5 while J < N
+IF tab[J] is equal ITEM THEN GOTO STEP 6
+Set J = J +1
+PRINT J, ITEM
+Stop
+
+ALGORITHM search_array
+VAR
+   tab : ARRAY_OF INTEGER[5];
+   i,j, pos, elt : INTEGER;
+BEGIN
+   FOR i FROM 0 TO 4 DO
+       Read(tab[i]);// insert from user
+   END_FOR
+
+   Write("give the element to search of");
+   Read(elt);
+
+   j := 0;
+   WHILE (j < tab.length) DO
+       IF (tab[j] = elt) THEN
+           BREAK; // element is found let break the loop
+       END_IF
+       j := j+1; // update index
+   END_WHILE
+
+   IF (j = tab.length) THEN  // we reached the end of array without finding the element
+       pos := -1; // -1 means we don't find the element.
+   ELSE
+       pos := j;
+   END_IF
+
+   Write("The position of the element is ", pos);
+END
+The last step is to see how to delete an element from an array.
+Here is the steps to follow when we want to delete an element from an array:
+Start
+Set J = K
+Repeat steps 4 and 5 while J < N
+Set LA[J] = LA[J + 1]
+Set J = J+1
+Stop
+And here it is the structured algorithm:
+
+ALGORITHM deletion_array
+VAR
+   tab : ARRAY_OF INTEGER[5];
+   i,j, pos : INTEGER;
+BEGIN
+   FOR i FROM 0 TO 4 DO
+       Read(tab[i]);// insert from user
+   END_FOR
+
+   Write("give the position to delete");
+   Read(pos);
+
+   j := pos;
+   WHILE (j < tab.length) DO
+       tab[j] := tab[j+1]; // translation from right to left
+       j := j+1; // update index
+   END_WHILE
+
+   // remember the tab.length is decreased by 1.
+
+END
+
+
+// STRING CODE HERE
+String
+Now, we are going to practice some of what we've learned about string.
+We will make three examples of string manipulation.
+
+The first one is about comparing two string.
+We can browse a string like we browse an array, we have simply to call the string identifier, with an index inside brackets.
+
+Let’s see the code below :
+
+ALGORITHM compare_two_strings
+VAR
+   str1, str2, : STRING[50];
+   i : INTEGER;
+BEGIN
+   Write("Give the first string to compare");
+   Read(str1);
+   Write("Give the second string to compare");
+   Read(str2);
+
+   IF (str1.length <> str2.length) THEN
+   // if the length of the two string is different we can make sure that they are not equal
+       Write("The Strings are not equals");
+   ELSE
+       FOR i FROM 0 TO str1.length-1 STEP 1 DO
+           IF (str1[i]<>str2[i]) THEN
+               BREAK;// we break if in the same position the caracters of two strings are different
+           END_IF
+       END_FOR
+       IF (i = str1.length) THEN
+           Write("The Strings are equals");
+       ELSE
+           Write("The Strings are not equals");
+       END_IF
+   END_IF
+  
+END
+Second, let's suppose that we have the same string but the first one is upper case, the algorithm will return that the two string are not equal.
+To make sure that we escape this corner case, we need to make sure that we convert the two strings into an uppercase or lowercase.
+Let’s see the code below :
+
+ALGORITHM compare_ignore_two_strings
+VAR
+   str1, str2, : STRING[50];
+   i : INTEGER;
+BEGIN
+   Write("Give the first string to compare");
+   Read(str1);
+   Write("Give the second string to compare");
+   Read(str2);
+
+   IF (str1.length <> str2.length) THEN
+       Write("The Strings are not equals");
+   ELSE
+       str1 := ToUpper(str1); // this function will convert the character into uppercase
+       str2 := ToUpper(str2);
+       FOR i FROM 0 TO str1.length-1 STEP 1 DO
+           IF (str1[i]<>str2[2]) THEN
+               BREAK;
+           END_IF
+       END_FOR
+       IF (i = str1.length-1) THEN
+           Write("The Strings are equals");
+       ELSE
+           Write("The Strings are not equals");
+       END_IF
+   END_IF
+  
+END
+In the third and last algorithm, we are going to remove the blanks from the beginning of a given string.
+
+Let's take a look at this algorithm:
+
+ALGORITHM delete_blank_begin
+VAR
+   str : STRING[] := "   GoMyCode";
+   i : INTEGER := 0;
+   j : INTEGER := 0;
+BEGIN
+   WHILE ( str[0]=' ') DO
+       j := 0;
+       WHILE (j < str.length) DO
+           str[j] := str[j+1]; // translation from right to left
+           j := j+1; // update index
+       END_WHILE
+   END_WHILE
+END
+
+More about benefits
+As we have seen in the previous slides, the main key benefits of procedural programming are:
+The clarity and readability of the algorithm,
+The reuse of code,
+The facility of maintaining it.
+
+Let’s create an algorithm that calculates the sum of the successive elements.
+The code below is our first try:
+
+ALGORITHM array_sum_two_element
+VAR
+  tab : ARRAY_OF type[50];
+  i,n : INTEGER; 
+BEGIN
+   // Read the size
+   Read(n);
+   // Read elements
+   FOR i FROM 0 TO n-1 STEP 1  DO
+       Read(tab[i]);
+   END_FOR
+   // Add successive element
+   FOR i FROM 0 TO n-2 STEP 1  DO
+   tab[i] := tab[i]+tab[i+1];
+   END_FOR
+   // Display the array
+   FOR i FROM 0 TO n-1 STEP 1  DO
+       Write(tab[i])
+   END_FOR
+END
+This algorithm works fine, but we can optimize it more.
+
+As we can notice, the main idea is to create an algorithm that calculates the sum of successive elements.
+Even though they are necessary, the two pieces of code do not fit in the solution
+They are, in fact, the reading of the array elements and the displaying of the result.
+If we want to take advantage of procedural programming, we can divide the previous algorithm into three sub-algorithm (each one of them will resolve a sub-problem). Our final version will look like:
+
+ALGORITHM array_sum_two_element
+VAR
+  tab : ARRAY_OF type[50];
+  i,n : INTEGER; 
+BEGIN
+   // Read the size
+   Read(n);
+//    Read elements
+   /* *** *** */
+  // Sub-algorithm reading elements of array
+  /* *** *** */
+   // Add successive element
+  // Sub-algorithm calculating successive elements of array
+  /* *** *** */
+   // Dispalay the array
+  // Sub-algorithm displaying elements of array
+   /* *** *** */
+END
+Don’t worry, this is just a draft, we will see how to create a procedure and function with more details in the next slides.
+

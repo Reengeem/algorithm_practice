@@ -1,0 +1,43 @@
+ALGORITHM insertion_sort
+VAR
+    set_declarations
+BEGIN
+    set_instructions
+END
+VAR
+    set_declarations
+BEGIN
+    set_instructions
+END
+VAR
+    i, j, n, temp : INTEGER
+    insert_arr : ARRAY_OF INTEGER[z];  // z is the size of the array
+BEGIN
+a
+    // prompt to get size of aarray to be sorted betweeen 1 and z
+    REPEAT
+        Write ("insert size of array to be selected: ")
+        Read (n)
+    UNTIL (n > 0 AND n <= z)
+
+    // get numbers to be sorted
+    Write ("Enter numbers to be sorted one after another:")
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Read (insertion_arr[i])
+    END_FOR
+
+
+    //insertion sort commence here  starting from the second item in the array as the the key value, loop through till the last item
+    FOR i FROM 1 TO n - 1 STEP 1  DO
+        temp = arr[i]                             
+        FOR j FROM i-1 TO 0 STEP step  -1         
+            IF (temp < insertion_arr[j]) THEN     
+                arr[j+1] = arr[j]                 
+                arr [j] = temp                    
+            ELSE
+                BREAK;                              
+            END_IF
+        END_FOR
+    END_FOR
+    Write (arr)                                    
+END
